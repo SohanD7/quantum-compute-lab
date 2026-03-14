@@ -86,4 +86,7 @@ quantum-compute-lab/
 | Total job completion (10 workers) | **16 seconds** |
 | Redis channel | `wave_channel` |
 
+## 🎥 D5 Demo Video
+[▶️ Watch Tiled Demo — Matplotlib + Grafana (Google Drive)] https://drive.google.com/file/d/1TvF71ZqMr1odVhZMJ4-nAYu8R_MFTyMm/view?usp=drive_link
+
 > ⚠️ AWS infrastructure has been spun down to avoid costs. All source code, manifests, and the D5 demo video are preserved in this repository.
