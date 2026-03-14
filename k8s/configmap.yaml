@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: quantum-config
+  namespace: default
+data:
+  # ── IMPORTANT: Update REDIS_HOST with your EC2 public IP in Phase D3 ──────
+  # For D2 testing, we use a placeholder — pods will retry Redis connection
+  REDIS_HOST: "34.212.0.152"
+  REDIS_PORT: "6379"
+  GRID_SIZE: "100"

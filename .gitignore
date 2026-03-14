@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+*.so
+*.egg-info/
+.DS_Store
+*.mov
+*.mp4
+venv/
+.env

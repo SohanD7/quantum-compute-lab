@@ -1,0 +1,35 @@
+# =============================================================================
+# Static PersistentVolume — hostPath, no cloud provisioner required
+# Binds immediately, no StorageClass, no CSI driver dependency
+# =============================================================================
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: quantum-results-pv
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""        # empty = static PV, no StorageClass needed
+  hostPath:
+    path: /tmp/quantum-results
+    type: DirectoryOrCreate
+---
+# =============================================================================
+# PVC — binds directly to the static PV above via volumeName
+# =============================================================================
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: quantum-results-pvc
+  namespace: default
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ""        # must match PV storageClassName
+  volumeName: quantum-results-pv  # direct binding, no provisioner involved
+  resources:
+    requests:
+      storage: 5Gi

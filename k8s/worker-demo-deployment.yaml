@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quantum-worker-demo
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: quantum-worker
+  template:
+    metadata:
+      labels:
+        app: quantum-worker
+        metrics: "true"
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9100"
+        prometheus.io/path: "/metrics"
+    spec:
+      containers:
+        - name: node-exporter
+          image: prom/node-exporter:v1.7.0
+          ports:
+            - name: metrics
+              containerPort: 9100
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "32Mi"
